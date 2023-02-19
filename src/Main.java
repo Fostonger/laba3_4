@@ -19,17 +19,12 @@ public class Main {
             PeopleGroup robbers = new PeopleGroup(new Creature[]{fille, rulle});
 
             // Objects
-            class Home extends AbstractObject {
-                Home() {
-                    super("home");
-                }
-            }
 
             Room room = new Room(boy);
             Robe robe = new Robe();
             Door door = new Door();
             Window window = new Window();
-            Home home = new Home();
+            Carlsson.Home home = new Carlsson.Home();
             Police police = new Police();
 
             IOUtils.println(uncle.interactWith(room, Verb.HEAD, Adjective.HURRY));
