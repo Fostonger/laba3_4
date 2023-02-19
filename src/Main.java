@@ -58,12 +58,14 @@ public class Main {
                     window.getNameWithDescription(Adverb.IN.combineWith(room.getName()))));
             IOUtils.print(boy.think(carlsson.interactWith(home, Verb.HEAD, null) +
                     ", and " + it.getNameWithDescription(Adjective.GOOD.getValue())));
-            IOUtils.println(carlsson.avoidMeetingWith(
-                    Adverb.NEITHER.add(Adverb.WITH).combineWith(robbers.getName()) + ", " +
+            IOUtils.println(carlsson.avoidMeetingWith(Adverb.NEITHER.add(Adverb.WITH)
+                    .combineWith(robbers.getName()) + ", " +
                             Adverb.NOR.add(Adverb.WITH).combineWith(police.getName())
             ));
-            IOUtils.println(boy.think(Adjective.SO_GOOD.getPrefixDescriptionForSubject(
-                    it.getNameWithDescription(Adverb.THAT.combineWith(boy.doAction(Verb.UNBELIEVABLE)))
+            IOUtils.println(boy.think(it.getNameWithDescription(
+                    Adjective.SO_GOOD.getPrefixDescriptionForSubject(
+                            Adverb.THAT.combineWith(boy.doAction(Verb.UNBELIEVABLE))
+                    )
             )));
         }
         catch (EmptyNameException e) {
