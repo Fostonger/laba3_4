@@ -3,6 +3,7 @@ package creature;
 import enums.Adjective;
 import enums.Verb;
 import exceptions.EmptyNameException;
+import exceptions.NullObjectException;
 import interfaces.Interactable;
 import interfaces.ValueHoldable;
 
@@ -16,15 +17,22 @@ public abstract class Creature {
 
     public String getName() { return name; }
     public String interactWith(Interactable object, Verb interaction, Adjective adjective) {
+        checkNotNull(object);
         return name + " " +
                 object.getInteractionWithDescription(interaction, (adjective != null) ? adjective.getValue() : "");
     }
-    public String doAction(ValueHoldable action) {
+    public String doAction(ValueHoldable action) throws NullObjectException {
+        checkNotNull(action);
         return name + " " + action.getValue();
     }
 
-    public String doActionWithDescription(ValueHoldable action, String description) {
+    public String doActionWithDescription(ValueHoldable action, String description) throws NullObjectException {
+        checkNotNull(action);
         return doAction(action) + " " + description;
+    }
+
+    private void checkNotNull(Object obj) throws NullObjectException {
+        if (obj == null) throw new NullObjectException();
     }
     @Override
     public boolean equals(Object obj) {
