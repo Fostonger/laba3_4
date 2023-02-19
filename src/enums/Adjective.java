@@ -5,8 +5,8 @@ import interfaces.ValueHoldable;
 public enum Adjective implements ValueHoldable {
     HURRY("hurriedly"),
     OPEN("was open"),
-    GOOD("it is good"),
-    SO_GOOD("it is so good");
+    GOOD("is good"),
+    SO_GOOD("is so good");
 
     private String description;
 
