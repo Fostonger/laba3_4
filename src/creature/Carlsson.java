@@ -11,7 +11,7 @@ public class Carlsson extends Creature {
         return Verb.NO_NEED.getValue() + " " + Adverb.FOR.combineWith(getName() + " " + Verb.MEET.getValue() + " " + people);
     }
 
-    public static class Home extends AbstractObject {
+    public class Home extends AbstractObject {
         public Home() {
             super("home");
         }

@@ -43,7 +43,7 @@ public class Main {
             Robe robe = new Robe();
             Door door = new Door();
             Window window = new Window();
-            Carlsson.Home home = new Carlsson.Home();
+            Carlsson.Home home = carlsson.new Home();
             Police police = new Police();
             AbstractObject it = new AbstractObject("it") {};
 
