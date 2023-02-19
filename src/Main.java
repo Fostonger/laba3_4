@@ -5,18 +5,36 @@ import enums.Adverb;
 import enums.Verb;
 import exceptions.EmptyNameException;
 
+import java.util.StringJoiner;
+
 public class Main {
     public static void main(String[] args) {
+
         try {
             // Creatures
             UncleJulius uncle = new UncleJulius();
             Malysh boy = new Malysh();
             Bok missBok = new Bok();
             Carlsson carlsson = new Carlsson();
-            PeopleGroup group = new PeopleGroup(new Creature[]{uncle, boy, missBok});
             Fille fille = new Fille();
             Rulle rulle = new Rulle();
+            class PeopleGroup extends Creature {
+                public PeopleGroup(Creature[] people) throws EmptyNameException {
+                    super(concatNames(people));
+                }
+
+                private static String concatNames(Creature[] people) {
+                    if (people == null || people.length == 0) return "";
+                    if (people.length == 1) return people[0].getName();
+                    StringJoiner joiner = new StringJoiner(", ");
+                    for (int i = 0; i < people.length - 1; i++) {
+                        joiner.add(people[i].getName());
+                    }
+                    return joiner.toString() + " and " + people[people.length - 1].getName();
+                }
+            }
             PeopleGroup robbers = new PeopleGroup(new Creature[]{fille, rulle});
+            PeopleGroup group = new PeopleGroup(new Creature[]{uncle, boy, missBok});
 
             // Objects
 
