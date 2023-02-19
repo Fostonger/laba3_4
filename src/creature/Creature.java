@@ -11,7 +11,7 @@ public abstract class Creature {
 
     public Creature(String name) throws EmptyNameException {
         this.name = name;
-        CreatureNameValidator.check(name);
+        CreatureNameValidator.check(name, this);
     }
 
     public String getName() { return name; }
@@ -43,13 +43,12 @@ public abstract class Creature {
     public String toString() { return getName(); }
 
     public static class CreatureNameValidator {
-        public static void check(String name) throws EmptyNameException {
-            if (name.isBlank()) {
-                throw new EmptyNameException();
+        public static void check(String name, Object obj) throws EmptyNameException {
+            if (name == null || name.isBlank()) {
+                throw new EmptyNameException(obj.getClass().toString());
             }
         }
     }
-
 
     // Add exception to check that objects are not null
 }
