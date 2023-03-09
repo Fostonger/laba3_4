@@ -5,10 +5,9 @@ import enums.Verb;
 import exceptions.EmptyNameException;
 import exceptions.NullObjectException;
 import interfaces.Interactable;
-import interfaces.ValueHoldable;
 
 public abstract class Creature {
-    private String name;
+    private final String name;
 
     public Creature(String name) throws EmptyNameException {
         this.name = name;
@@ -21,17 +20,8 @@ public abstract class Creature {
         return name + " " +
                 object.getInteractionWithDescription(interaction, (adjective != null) ? adjective.getValue() : "");
     }
-    public String doAction(ValueHoldable action) throws NullObjectException {
-        checkNotNull(action);
-        return name + " " + action.getValue();
-    }
 
-    public String doActionWithDescription(ValueHoldable action, String description) throws NullObjectException {
-        checkNotNull(action);
-        return doAction(action) + " " + description;
-    }
-
-    private void checkNotNull(Object obj) throws NullObjectException {
+    protected void checkNotNull(Object obj) throws NullObjectException {
         if (obj == null) throw new NullObjectException();
     }
     @Override
@@ -41,7 +31,7 @@ public abstract class Creature {
             return false;
         }
         Creature creature = (Creature) obj;
-        return getName() == creature.getName();
+        return getName().equals(creature.getName());
     }
     @Override
     public int hashCode() {
@@ -57,6 +47,4 @@ public abstract class Creature {
             }
         }
     }
-
-    // Add exception to check that objects are not null
 }
